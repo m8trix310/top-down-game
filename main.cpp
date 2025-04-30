@@ -30,7 +30,7 @@ int main()
 
     };
 
-        goblin.setTarget(&knight);
+    goblin.setTarget(&knight);
 
     SetTargetFPS(60);
 
@@ -70,6 +70,20 @@ int main()
             }
         }
         goblin.tick(GetFrameTime());
+
+        // check weapon collision
+
+      
+            if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+            {
+                if(CheckCollisionRecs(goblin.getCollisionRec(),knight.getCollisionRec()))
+           {
+            goblin.setAlive(false);
+           }
+           
+            }
+        
+
         EndDrawing();
     }
     CloseWindow();

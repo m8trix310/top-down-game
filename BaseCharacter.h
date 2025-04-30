@@ -8,14 +8,12 @@ class BaseCharacter
 BaseCharacter();
 Vector2 getWorldPos() { return worldPos; }
 void undoMovement();
-
 virtual void tick(float deltaTime);
-
 Rectangle getCollisionRec();
-
 virtual Vector2 getScreenPos() = 0;
 
-
+bool getAlive(){return alive;}
+bool setAlive(bool isAlive) { alive = isAlive; return alive; }
 
 protected:
 Texture2D texture{LoadTexture("characters/knight_idle_spritesheet.png")};
@@ -43,7 +41,7 @@ Vector2 velocity{};
 
   private:
 
-
+bool alive {true};
 
 };
 
