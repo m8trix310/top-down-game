@@ -81,3 +81,12 @@ void Character::tick(float deltaTime)
 
     );
 }
+
+void Character::takeDamage(float damage) 
+{
+  health -= damage;
+  if(health <= 0.f)
+  {
+    setAlive(false);
+  }
+}
