@@ -6,19 +6,19 @@
 #include <string>
 int main()
 {
-    const int windowWidth{384};
-    const int windowHeight{384};
+    const int windowWidth{600};
+    const int windowHeight{600};
     InitWindow(windowWidth, windowHeight, "Clashy Clash");
 
     Texture2D map = LoadTexture("nature_tileset/OpenWorldMap24x24.png");
     Vector2 mapPos{0.0, 0.0};
-    const float mapScale{4.0f};
+    const float mapScale{6.0f};
 
     Character knight{windowWidth, windowHeight};
     // create instance of Prop
     // an array of props
     Prop props[2]{
-        Prop{Vector2{600.f, 300.f}, LoadTexture("nature_tileset/Rock.png")},
+        Prop{Vector2{900.f, 800.f}, LoadTexture("nature_tileset/Rock.png")},
         Prop{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/log.png")}
 
     };
@@ -31,6 +31,13 @@ int main()
 
     };
 
+    Enemy goblin2{
+        Vector2{1000.f, 500.f},
+        LoadTexture("characters/goblin_idle_spritesheet.png"),
+        LoadTexture("characters/goblin_run_spritesheet.png")
+
+    };
+
     Enemy slime{
         Vector2{500.f, 700.f},
         LoadTexture("characters/slime_idle_spritesheet.png"),
@@ -38,6 +45,7 @@ int main()
 
     Enemy *enemies[]{
         &goblin,
+        &goblin2,
         &slime};
 
     for (auto enemy : enemies)
@@ -65,7 +73,7 @@ int main()
         // character health
         if (!knight.getAlive()) // character is not alive case
         {
-            DrawText("Game Over!", 55.f, 45.f, 40, RED);
+            DrawText("Game Over!", 95.f, 85.f, 40, RED);
             EndDrawing();
             continue;
         }
